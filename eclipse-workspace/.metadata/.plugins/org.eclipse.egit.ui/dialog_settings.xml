@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="EGit.KnownHosts">
+		<item value="git.eclipse.org"/>
+		<item value="bitbucket.org"/>
+		<item value="github.com"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/DukeCompsci201Fall2018/nbody-fall2018.git"/>
+		<item value="https://github.com/myliewalker/personality"/>
+		<item value="https://github.com/myliewalker/projectp0"/>
+		<item value="https://github.com/myliewalker/projectp0.git"/>
+	</list>
+	<list key="CommitDialog.authorValues">
+		<item value="myliewalker &lt;myliewalker@10.196.19.211&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="myliewalker &lt;myliewalker@10.196.19.211&gt;"/>
+	</list>
+	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">
+		<item value="650" key="DIALOG_WIDTH"/>
+		<item value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
+		<item value="440" key="DIALOG_HEIGHT"/>
+		<item value="206" key="DIALOG_X_ORIGIN"/>
+		<item value="109" key="DIALOG_Y_ORIGIN"/>
+		<list key="sashWeights">
+			<item value="600"/>
+			<item value="400"/>
+		</list>
+	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="/Users/myliewalker/git/projectp0/.git">
+			<item value="false"/>
+			<item value="myliewalker &lt;myliewalker@10.196.19.211&gt;"/>
+			<item value="revised&#x0A;"/>
+			<item value="myliewalker &lt;myliewalker@10.196.19.211&gt;"/>
+			<item value="ac02da3dbc8aff79075f8415f4d3ec868fe67b5a"/>
+			<item value="0"/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item value="500,500" key="STAGING_SASH_FORM_WEIGHT"/>
+		<item value="false" key="sortItemState"/>
+		<item value="500,500" key="HORIZONTAL_SASH_FORM_WEIGHT"/>
+	</section>
+</section>

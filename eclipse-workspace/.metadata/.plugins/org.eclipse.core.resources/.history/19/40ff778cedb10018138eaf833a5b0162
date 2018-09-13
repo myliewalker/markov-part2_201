@@ -1,0 +1,146 @@
+
+public class Common {
+
+//	public int count (String a, String b) {
+//		int count = 0;
+//        for (int i = 0; i < a.length(); i++)
+//        {
+//        		for (int j = 0; j < b.length(); j++)
+//        		{
+////        			if (numRepeat(a) > numRepeat(b))
+////    				{
+////    					count--;
+////    				}
+////        			if (a.substring(i, i+1).equals(b.substring(j, j+1)))
+////        			{
+////        				if (repeat(i, a) == true && repeat(b) == true)
+////        				{
+////        					count++;
+////        				}
+////        				else
+////        				{
+////        					count++;
+////        				}
+////        				break;
+////        			}
+//        			if (a.substring(i, i+1).equals(b.substring(j, j+1)))
+//        			{
+//        				count++;
+//        				break;
+//        			}
+//        			if (alreadyTested(i, a) == true)
+//        			{
+//        				
+//        			}
+//        		}
+//        }
+//        return count;
+//     }
+	
+	public int count (String a, String b)
+	{
+		int total = 0;
+		for (int i = 0; i < a.length(); i++)
+		{
+			if (numInstances(a.substring(i, i+1), a) < numInstances(a.substring(i, i+1), b))
+			{
+				if (alreadyChecked(i, a.substring(i, i+1), a) == false)
+				{
+					total+=numInstances(a.substring(i, i+1), a);
+				}
+			}
+			if (numInstances(a.substring(i, i+1), a) >= numInstances(a.substring(i, i+1), b))
+			{
+				if (alreadyChecked(i, a.substring(i, i+1), a) == false)
+				{
+					total+=numInstances(a.substring(i, i+1), b);
+				}
+			}
+		}
+		return total;
+	}
+	
+	public int numInstances(String letter, String word)
+	{
+		int instances = 0;
+		for (int i = 0; i < word.length(); i++)
+		{
+			if (letter.equals(word.substring(i, i+1)))
+			{
+				instances++;
+			}
+		}
+		return instances;
+	}
+	
+	public boolean alreadyChecked(int pos, String letter, String word)
+	{
+		for (int i = 0; i < pos; i++)
+		{
+			if (letter.equals(word.substring(i, i+1)))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+}
+//	public boolean alreadyTested(int current, String w)
+//	{
+//		for (int i = 0; i < current; i++)
+//		{
+//			if (w.substring(current, current+1).equals(w.substring(i, i+1)))
+//			{
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+//	
+//	public boolean repeat (int pos, String c)
+//	{
+//		for (int i = 0; i < c.length(); i++)
+//		{
+//			for (int j = i+1; j < c.length(); j++)
+//			{
+//				if (c.substring(i, i+1).equals(c.substring(j, j+1)) && i != pos)
+//				{
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+//	}
+//	
+//	public boolean repeat (String c)
+//	{
+//		for (int i = 0; i < c.length(); i++)
+//		{
+//			for (int j = i+1; j < c.length(); j++)
+//			{
+//				if (c.substring(i, i+1).equals(c.substring(j, j+1)))
+//				{
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+//	}
+//	
+//	public int numRepeat(String word)
+//	{
+//		int num = 0;
+//		for (int i = 0; i < word.length(); i++)
+//		{
+//			for (int j = i+1; j < word.length(); j++)
+//			{
+//				if (word.substring(i, i+1).equals(word.substring(j, j+1)))
+//				{
+//					num++;
+//				}
+//			}
+//		}
+//		return num;
+//	}
+//	
+//}

@@ -1,0 +1,103 @@
+
+public class Body {
+
+	private double myXPos;
+	private double myYPos;
+	private double myXVel;
+	private double myYVel;
+	private double myMass;
+	private String myFileName;
+	private Body bod;
+	
+	public Body (double xpos, double ypos, double xvel, double yvel, double mass,String name)
+	{
+		myXPos = xpos;
+		myYPos = ypos;
+		myXVel = xvel;
+		myYVel = yvel;
+		myMass = mass;
+		myFileName = name;
+	}
+	
+	public Body (Body b)
+	{
+		bod = new Body(b);
+	}
+	//create a body object
+	
+	public double getX()
+	{
+		return myXPos;
+	}
+	
+	public double getY()
+	{
+		return myYPos;
+	}
+	
+	public double getXVel()
+	{
+		return myXVel;
+	}
+	
+	public double getYVel()
+	{
+		return myYVel;
+	}
+	
+	public double getMass()
+	{
+		return myMass;
+	}
+	
+	public String getName()
+	{
+		return myFileName;
+	}
+	
+	public double calcDistance(Body b) {
+		return Math.sqrt(Math.pow(b.getX() - myXPos, 2) + Math.pow(b.getY() - myYPos, 2));
+	}
+	
+	public double calcForceExertedBy(Body p)
+	{
+		return (myMass * p.getMass() * 6.67 * Math.pow(10, (-11))) / calcDistance(p);
+	}
+	//problem here! returns infinity--cant calc distance on b with b
+	
+	public double calcForceExertedByX(Body b)
+	{
+		return b.calcForceExertedBy(b) * (b.getX() - myXPos) / calcDistance(b);
+	}
+	
+	public double calcForceExertedByY(Body b)
+	{
+		return b.calcForceExertedBy(b) * (b.getY() - myYPos) / calcDistance(b);
+	}
+	
+	public double calcNetForceExertedByX(Body[] bodies)
+	{
+		double x = 0;
+		for (Body b : bodies)
+		{
+			if (b != this)
+			{
+				x += calcForceExertedBy(b);
+			}
+		}
+		return x;
+	}
+	
+	public double calcNetForceExertedByY(Body[] bodies)
+	{
+		double y = 0;
+		for (Body b : bodies)
+		{
+			if (b != this)
+			{
+				y += calcForceExertedByY(b);
+			}
+		}
+		return y;
+	}
+}

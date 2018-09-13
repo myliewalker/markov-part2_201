@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1518026396532_1" label="penguin.jpg" name="penguin.jpg">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/pixLab/images" type="2"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1514582682813_0" label="Window Working Set" name="Aggregate for window 1514582682813"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1526995046718_2" label="Window Working Set" name="Aggregate for window 1526995046718"/>
+</workingSetManager>

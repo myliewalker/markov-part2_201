@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="276" key="DIALOG_X_ORIGIN"/>
+		<item value="295" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="if (eliminate" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="if (eliminate"/>
+			<item value="fourthR"/>
+			<item value="eliminate"/>
+			<item value="indexOf"/>
+			<item value="mostg"/>
+			<item value="mostgreen"/>
+			<item value="maxgreen"/>
+			<item value="playable"/>
+			<item value="calledcolor"/>
+			<item value="called color"/>
+			<item value="(playable(upCard, hand.get(i)"/>
+			<item value="state"/>
+			<item value="for (int i = 0; i &lt; hand.size(); i++)&#x0A;        &#x09;&#x09;&#x09;{&#x0A;        &#x09;&#x09;&#x09;&#x09;if (yellow.get(0).getNumber() == hand.get(i).getNumber())&#x0A;        &#x09;&#x09;&#x09;&#x09;{&#x0A;        &#x09;&#x09;&#x09;&#x09;&#x09;return i;&#x0A;        &#x09;&#x09;&#x09;&#x09;}&#x0A;        &#x09;&#x09;&#x09;}"/>
+			<item value="for (int i = 0; i &lt; hand.size(); i++)&#x0A;        &#x09;&#x09;&#x09;{&#x0A;        &#x09;&#x09;&#x09;&#x09;if (red.get(0).getNumber() == hand.get(i).getNumber())&#x0A;        &#x09;&#x09;&#x09;&#x09;{&#x0A;        &#x09;&#x09;&#x09;&#x09;&#x09;return i;&#x0A;        &#x09;&#x09;&#x09;&#x09;}&#x0A;        &#x09;&#x09;&#x09;}"/>
+			<item value="for (int i = 0; i &lt; hand.size(); i++)&#x0A;        &#x09;&#x09;&#x09;{&#x0A;        &#x09;&#x09;&#x09;&#x09;if (green.get(0).getNumber() == hand.get(i).getNumber())&#x0A;        &#x09;&#x09;&#x09;&#x09;{&#x0A;        &#x09;&#x09;&#x09;&#x09;&#x09;return i;&#x0A;        &#x09;&#x09;&#x09;&#x09;}&#x0A;        &#x09;&#x09;&#x09;}"/>
+		</list>
+		<list key="replacehistory">
+			<item value="(playable(upCard, hand.get(i), state)"/>
+			<item value="return indexOf(hand, yellow.get(0));"/>
+			<item value="return indexOf(hand, red.get(0));"/>
+			<item value="return indexOf(hand, green.get(0));"/>
+			<item value="return indexOf(hand, blue.get(0);"/>
+			<item value="return indexOf(hand, blue.get(0)"/>
+			<item value="Color.RED"/>
+			<item value="Color.YELLOW"/>
+			<item value="Color.BLUE"/>
+			<item value="Color.GREEN"/>
+			<item value="Color.Blue"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="290" key="DIALOG_WIDTH"/>
+		<item value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
+		<item value="409" key="DIALOG_HEIGHT"/>
+		<item value="352" key="DIALOG_X_ORIGIN"/>
+		<item value="373" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

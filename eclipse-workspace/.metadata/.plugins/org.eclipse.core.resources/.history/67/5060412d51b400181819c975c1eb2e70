@@ -1,0 +1,64 @@
+
+public class Body {
+
+	private double myXPos;
+	private double myYPos;
+	private double myXVel;
+	private double myYVel;
+	private double myMass;
+	private String myFileName;
+	
+	public Body (double xpos, double ypos, double xvel, double yvel, double mass,String name)
+	{
+		myXPos = xpos;
+		myYPos = ypos;
+		myXVel = xvel;
+		myYVel = yvel;
+		myMass = mass;
+		myFileName = name;
+	}
+	
+	public Body (Body b)
+	{
+		myXPos = b.getX();
+		myYPos = b.getY();
+		myXVel = b.getXVel();
+		myYVel = b.getYVel();
+		myMass = b.getMass();
+		myFileName = b.getName();
+	}
+	
+	public double getX()
+	{
+		return myXPos;
+	}
+	
+	public double getY()
+	{
+		return myYPos;
+	}
+	
+	public double getXVel()
+	{
+		return myXVel;
+	}
+	
+	public double getYVel()
+	{
+		return myYVel;
+	}
+	
+	public double getMass()
+	{
+		return myMass;
+	}
+	
+	public String getName()
+	{
+		return myFileName;
+	}
+	
+	public double calcDistance(Body p2) {
+		return Math.sqrt(Math.pow(myXPos, 2) + Math.pow(myYPos, 2));
+	}
+}

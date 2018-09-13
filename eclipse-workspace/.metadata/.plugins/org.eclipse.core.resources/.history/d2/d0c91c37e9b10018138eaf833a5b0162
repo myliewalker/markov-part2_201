@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+
+public class Common {
+
+	public int count (String a, String b) {
+		ArrayList<String> common = new ArrayList();
+		int count = 0;
+        for (int i = 0; i < a.length(); i++)
+        {
+        		for (int j = 0; j < b.length(); j++)
+        		{
+        			if (a.substring(i, i+1).equals(b.substring(j, j+1)))
+        			{
+        				count++;
+        				common.add(a.substring(i, i+1));
+        				break;
+        			}
+        		}
+        }
+        for (int k = 0; k < common.size(); k++)
+        {
+        		for (int m = 0; m < common.size(); m++)
+        		{
+        			if(common.get(k).equals(common.get(m)));
+        			{
+        				common.remove(k);
+        			}
+        		}
+        }
+        return count;
+     }
+}

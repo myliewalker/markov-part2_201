@@ -1,0 +1,96 @@
+
+public class Common {
+
+	public int count (String a, String b) {
+		int count = 0;
+        for (int i = 0; i < a.length(); i++)
+        {
+        		for (int j = 0; j < b.length(); j++)
+        		{
+        			if (numRepeat(a, i) > numRepeat(b))
+    				{
+    					count--;
+    				}
+        			if (a.substring(i, i+1).equals(b.substring(j, j+1)))
+        			{
+        				if (repeat(i, a) == true)
+        				{
+        					if (repeat(b) == true)
+        					{
+        						count++;
+        					}
+        				}
+        				else
+        				{
+        					count++;
+        				}
+        				break;
+        			}
+        		}
+        }
+        return count;
+     }
+	
+	public boolean repeat (int pos, String c)
+	{
+		for (int i = 0; i < c.length(); i++)
+		{
+			for (int j = i+1; j < c.length(); j++)
+			{
+				if (c.substring(i, i+1).equals(c.substring(j, j+1)) && i != pos)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean repeat (String c)
+	{
+		for (int i = 0; i < c.length(); i++)
+		{
+			for (int j = i+1; j < c.length(); j++)
+			{
+				if (c.substring(i, i+1).equals(c.substring(j, j+1)))
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public int numRepeat(String word, int position)
+	{
+		int num = 0;
+		for (int i = 0; i < word.length(); i++)
+		{
+			for (int j = i+1; j < word.length(); j++)
+			{
+				if (word.substring(i, i+1).equals(word.substring(j, j+1)))
+				{
+					num++;
+				}
+			}
+		}
+		return num;
+	}
+	
+	public int numRepeat(String word)
+	{
+		int num = 0;
+		for (int i = 0; i < word.length(); i++)
+		{
+			for (int j = i+1; j < word.length(); j++)
+			{
+				if (word.substring(i, i+1).equals(word.substring(j, j+1)))
+				{
+					num++;
+				}
+			}
+		}
+		return num;
+	}
+	
+}
