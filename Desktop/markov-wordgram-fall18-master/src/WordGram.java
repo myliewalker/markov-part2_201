@@ -10,6 +10,7 @@ public class WordGram {
 	private String[] myWords;   
 	private String myToString;  // cached string
 	private int myHash;         // cached hash value
+//	private int mySize;
 
 	/**
 	 * Create WordGram (add comments)
@@ -20,10 +21,11 @@ public class WordGram {
 	public WordGram(String[] source, int start, int size) {
 		myWords = new String[size];
 		// TODO: initialize myWords and ...
-		for (int i = start; i < size+start)
+		for (int i = start; i < size-start; i++)
 		{
 			myWords[i] = source[i];
 		}
+//		mySize = size;
 		myToString = null;
 		myHash = 0;
 	}
@@ -46,8 +48,7 @@ public class WordGram {
 	 */
 	public int length(){
 		// TODO: change this
-		//CHECK THIS METHOD
-		return WordGram.size;
+		return myWords.length;
 	}
 
 
@@ -58,14 +59,17 @@ public class WordGram {
 		}
 	    // TODO: complete this method
 		WordGram wg = (WordGram) o;
-		//CHECK: use of this--comparing array to string
-		if (this.myWords.length != wg.length())
+//		if (this == wg)
+//		{
+//			return true;
+//		}
+		if (this.length() != wg.length())
 		{
 			return false;
 		}
-		for (int i = 0; i < this.myWords.length; i++)
+		for (int i = 0; i < myWords.length; i++)
 		{
-			if (! myWords[i].equals(myWords[i]))
+			if (! (myWords[i].equals(wg.wordAt(i))))
 			{
 				return false;
 			}
@@ -76,11 +80,10 @@ public class WordGram {
 	@Override
 	public int hashCode(){
 		// TODO: complete this method
-		if (hashCode == 0)
+		if (myHash == 0 && myWords.length > 0)
 		{
-			hashCode = myToString.toString().hashCode();
-			//CHECK: does this loop end?
-		}
+			myHash = this.toString().hashCode();
+		}		
 		return myHash;
 	}
 	
@@ -93,11 +96,11 @@ public class WordGram {
 	public WordGram shiftAdd(String last) {
 		WordGram wg = new WordGram(myWords, 0, myWords.length);
 		// TODO: Complete this method
-		for (int i = 0; i < wg.length-1; i++)
+		for (int i = 0; i < wg.length()-1; i++)
 		{
-			wg[i] = wg[i+1];
+			myWords[i] = this.wordAt(i+1);
 		}
-		wg[wg.length-1] = last;
+		myWords[wg.length()-1] = last;
 		return wg;
 	}
 
