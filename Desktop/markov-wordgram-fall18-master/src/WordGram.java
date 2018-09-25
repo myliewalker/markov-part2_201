@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * WordGram objects represent a k-gram of strings/words.
  * 
@@ -10,22 +12,23 @@ public class WordGram {
 	private String[] myWords;   
 	private String myToString;  // cached string
 	private int myHash;         // cached hash value
-//	private int mySize;
 
 	/**
-	 * Create WordGram (add comments)
+	 * Create WordGram based on an array of Strings, source.
+	 The WordGram includes all the elements in source, starting 
+	 from index start.
 	 * @param source
 	 * @param start
 	 * @param size
 	 */
 	public WordGram(String[] source, int start, int size) {
-		myWords = new String[size];
+		ArrayList<String> temp = new ArrayList<String>();
 		// TODO: initialize myWords and ...
-		for (int i = start; i < size-start; i++)
+		for (int i = start; i < size + start; i++)
 		{
-			myWords[i] = source[i];
+			temp.add(source[i]);
 		}
-//		mySize = size;
+		myWords = temp.toArray(new String[size]);
 		myToString = null;
 		myHash = 0;
 	}
@@ -43,7 +46,7 @@ public class WordGram {
 	}
 
 	/**
-	 * Complete this comment
+	 * Return the length of myWords
 	 * @return
 	 */
 	public int length(){
@@ -59,17 +62,13 @@ public class WordGram {
 		}
 	    // TODO: complete this method
 		WordGram wg = (WordGram) o;
-//		if (this == wg)
-//		{
-//			return true;
-//		}
 		if (this.length() != wg.length())
 		{
 			return false;
 		}
-		for (int i = 0; i < myWords.length; i++)
+		for (int i = 0; i < this.length(); i++)
 		{
-			if (! (myWords[i].equals(wg.wordAt(i))))
+			if (! (this.wordAt(i).equals(wg.wordAt(i))))
 			{
 				return false;
 			}
@@ -89,19 +88,20 @@ public class WordGram {
 	
 
 	/**
-	 * Create and complete this comment
+	 * Remove the first word in myWords, and add a new word at the end
 	 * @param last is last String of returned WordGram
 	 * @return
 	 */
 	public WordGram shiftAdd(String last) {
 		WordGram wg = new WordGram(myWords, 0, myWords.length);
 		// TODO: Complete this method
-		for (int i = 0; i < wg.length()-1; i++)
+		String[] shifted = new String[myWords.length];
+		for (int i = 0; i < shifted.length-1; i++)
 		{
-			myWords[i] = this.wordAt(i+1);
+			shifted[i] = myWords[i+1];
 		}
-		myWords[wg.length()-1] = last;
-		return wg;
+		shifted[shifted.length-1] = last;
+		return new WordGram(shifted, 0, shifted.length);
 	}
 
 	@Override
@@ -109,6 +109,20 @@ public class WordGram {
 		// TODO: Complete this method
 		if (myToString == null)
 		{
+			// myToString = "";
+			// if (myWords.length == 1)
+			// {
+			// 	myToString = myWords[0];
+			// 	return myToString;
+			// }
+			// for (int i = 0; i < myWords.length; i=i+2)
+			// {
+			// 	myToString = myToString + myWords[i+1];
+			// 	if (i != myWords.length-1)
+			// 	{
+			// 		myToString = myToString + " ";
+			// 	}
+			// }
 			myToString = String.join(" ", myWords);
 		}	
 		return myToString;
