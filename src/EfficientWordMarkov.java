@@ -21,7 +21,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	@Override
 	public void setTraining(String text) {
 		myWords = text.split("\\s+");
-		for (int i = 0; i < text.length(); i++) {
+		for (int i = 0; i < myWords.length; i++) {
 			WordGram wg = new WordGram(myWords, i, myOrder);
 			if (! myMap.containsKey(wg)) {
 				myMap.put(wg, new ArrayList<String>());
