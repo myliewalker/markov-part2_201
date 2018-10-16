@@ -30,27 +30,12 @@ public class EfficientMarkov extends BaseMarkov {
 	 */
 	@Override
 	public void setTraining(String text) {
-//		myMap.clear();
+		myMap.clear();
 		myText = text;
 		for (int i = 0; i < myText.length() - myOrder; i++) {
 			if (! myMap.containsKey(myText.substring(i, i + myOrder))) {
 				myMap.put(myText.substring(i, i + myOrder), new ArrayList<String>());
 			}
-//			ArrayList<String> possible = super.getFollows(myText.substring(i, i + myOrder));
-//			for (int j = 0; j < possible.size()-1; j++) {
-//				for (int k = j+1; k < possible.size(); k++) {
-//					if (possible.get(j).equals(possible.get(k))) {
-//						possible.remove(k);
-//						k--;
-//					}
-//				}
-////				for (int m = 0; m < myMap.getValue(myText.substring(i, i + myOrder).size()) {
-////					if (possible.get(j).equals(myMap.getValue(myText.substring(i, i + myOrder)).get(m))) {
-////						possible.remove(j);
-////						j--;
-////					}
-////				}
-//			}
 			myMap.put(myText.substring(i, i + myOrder), super.getFollows(myText.substring(i, i + myOrder)));
 		}
 	}
@@ -63,9 +48,6 @@ public class EfficientMarkov extends BaseMarkov {
 	 */
 	@Override
 	public ArrayList<String> getFollows(String key) {
-		if (myMap.get(key).equals(PSEUDO_EOS)) {
-			return myMap.get(key);
-		}
 		if (! myMap.containsKey(key)) {
 			return new ArrayList<String>();
 //			throw new NoSuchElementException(key + " not in map");
