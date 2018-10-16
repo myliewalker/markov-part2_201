@@ -30,7 +30,6 @@ public class EfficientMarkov extends BaseMarkov {
 	 */
 	@Override
 	public void setTraining(String text) {
-		myMap.clear();
 		myText = text;
 		for (int i = 0; i < myText.length() - myOrder; i++) {
 			if (! myMap.containsKey(myText.substring(i, i + myOrder))) {

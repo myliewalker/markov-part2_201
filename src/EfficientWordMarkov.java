@@ -19,7 +19,6 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	
 //	@Override
 	public void setTraining(String[] words) {
-		myMap.clear();
 		myWords = words;
 		for (int i = 0; i < words.length; i++) {
 			WordGram wg = new WordGram(words, i, myOrder);
