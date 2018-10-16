@@ -32,7 +32,8 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	@Override
 	public ArrayList<String> getFollows(WordGram wg) {
 		if (! myMap.containsKey(wg)) {
-			throw new NoSuchElementException(wg + " not in map");
+			return new ArrayList<String>();
+//			throw new NoSuchElementException(wg + " not in map");
 		}
 		return myMap.get(wg);
 	}
