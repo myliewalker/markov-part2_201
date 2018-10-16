@@ -31,16 +31,16 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	}
 	
 	
-	public void setTraining(String[] words) {
-		myWords = words;
-		for (int i = 0; i < words.length; i++) {
-			WordGram wg = new WordGram(words, i, myOrder);
-			if (! myMap.containsKey(wg)) {
-				myMap.put(wg, new ArrayList<String>());
-			}
-			myMap.put(wg, super.getFollows(wg));
-		}
-	}
+//	public void setTraining(String[] words) {
+//		myWords = words;
+//		for (int i = 0; i < words.length; i++) {
+//			WordGram wg = new WordGram(words, i, myOrder);
+//			if (! myMap.containsKey(wg)) {
+//				myMap.put(wg, new ArrayList<String>());
+//			}
+//			myMap.put(wg, super.getFollows(wg));
+//		}
+//	}
 	
 	@Override
 	public ArrayList<String> getFollows(WordGram wg) {
