@@ -24,33 +24,33 @@ public class EfficientMarkov extends BaseMarkov {
 		this(3);
 	}
 	
-	/**
-	 * Checks if an integer is in the tree.
-	 * @param tree Root of the tree
-	 */
-	@Override
-	public void setTraining(String text) {
-		myMap.clear();
-		myText = text;
-		for (int i = 0; i < text.length() - myOrder; i++) {
-			if (! myMap.containsKey(text.substring(i, i + myOrder))) {
-				myMap.put(text.substring(i, i + myOrder), new ArrayList<String>());
-			}
-			myMap.put(text.substring(i, i + myOrder), getFollows(text.substring(i, i + myOrder)));
-		}
-	}
+	// /**
+	//  * Checks if an integer is in the tree.
+	//  * @param tree Root of the tree
+	//  */
+	// @Override
+	// public void setTraining(String text) {
+	// 	myMap.clear();
+	// 	myText = text;
+	// 	for (int i = 0; i < text.length() - myOrder; i++) {
+	// 		if (! myMap.containsKey(text.substring(i, i + myOrder))) {
+	// 			myMap.put(text.substring(i, i + myOrder), new ArrayList<String>());
+	// 		}
+	// 		myMap.put(text.substring(i, i + myOrder), getFollows(text.substring(i, i + myOrder)));
+	// 	}
+	// }
 	
-	/**
-	 * Checks if an integer is in the tree.
-	 * @param key Root of the tree
-	 * @return ArrayList of the strings that follow the key
-	 * @throws NullPointerException if key is not found
-	 */
-	@Override
-	public ArrayList<String> getFollows(String key) {
-		if (! myMap.containsKey(key)) {
-			throw new NoSuchElementException(key + " not in map");
-		}
-		return myMap.get(key);
-	}
+	// /**
+	//  * Checks if an integer is in the tree.
+	//  * @param key Root of the tree
+	//  * @return ArrayList of the strings that follow the key
+	//  * @throws NullPointerException if key is not found
+	//  */
+	// @Override
+	// public ArrayList<String> getFollows(String key) {
+	// 	if (! myMap.containsKey(key)) {
+	// 		throw new NoSuchElementException(key + " not in map");
+	// 	}
+	// 	return myMap.get(key);
+	// }
 }
