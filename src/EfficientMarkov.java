@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class EfficientMarkov extends BaseMarkov {
-	Map<String, ArrayList<String>> myMap;
+	private Map<String, ArrayList<String>> myMap;
 	
 	/**
 	 * Constructs an EfficientMarkov object with the specified order
@@ -31,11 +31,11 @@ public class EfficientMarkov extends BaseMarkov {
 	@Override
 	public void setTraining(String text) {
 		myText = text;
-		for (int i = 0; i < myText.length() - myOrder; i++) {
-			if (! myMap.containsKey(myText.substring(i, i + myOrder))) {
-				myMap.put(myText.substring(i, i + myOrder), new ArrayList<String>());
+		for (int i = 0; i < text.length() - myOrder; i++) {
+			if (! myMap.containsKey(text.substring(i, i + myOrder))) {
+				myMap.put(text.substring(i, i + myOrder), new ArrayList<String>());
 			}
-			myMap.put(myText.substring(i, i + myOrder), super.getFollows(myText.substring(i, i + myOrder)));
+			myMap.put(text.substring(i, i + myOrder), super.getFollows(text.substring(i, i + myOrder)));
 		}
 	}
 	
