@@ -47,7 +47,6 @@ public class EfficientMarkov extends BaseMarkov {
 				if (start + temp.length() >= myText.length()){
 					//System.out.println("found end with "+key);
 					follows.add(PSEUDO_EOS);
-					System.out.println(start);
 					break;
 				}
 				// next line is string equivalent of myText.charAt(start+key.length())
@@ -57,7 +56,6 @@ public class EfficientMarkov extends BaseMarkov {
 			}
 			myMap.put(temp, follows);
 		}
-		System.out.println(myMap);
 	}
 	
 	/**
