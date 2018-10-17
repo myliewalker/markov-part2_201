@@ -60,9 +60,9 @@ public class EfficientMarkov extends BaseMarkov {
 					}
 					break;
 				}
-			}
-			if (! myMap.containsKey(temp)) {
-				myMap.put(temp, follows);
+				if (! myMap.containsKey(temp)) {
+					myMap.put(temp, follows);
+				}
 			}
 			ArrayList<String> all = new ArrayList<String>();
 			for (String str : myMap.get(temp)) {
