@@ -31,47 +31,47 @@ public class EfficientMarkov extends BaseMarkov {
 	@Override
 	public void setTraining(String text) {
 		myText = text;
-		int pos = 0;
+//		int pos = 0;
 		ArrayList<String> follows = new ArrayList<String>();
 		for (int i = 0; i < text.length() - myOrder; i++) {
 			follows = new ArrayList<String>();
-			pos = 0;
+//			pos = 0;
 			String temp = text.substring(i, i + myOrder);
-			while (pos < myText.length()){
-				int start = myText.indexOf(temp,pos);
-				if (start == -1){
-					break;
-				}
-				if (start + temp.length() >= myText.length()){
-					follows.add(PSEUDO_EOS);
-					break;
-				}
-				String next = myText.substring(start+temp.length(), start+temp.length()+1);
-				follows.add(next);
-				pos++;
-			}
-//			for (int j = i + myOrder; j < text.length(); j++) {
-//				if (myText.substring(i, j).equals(temp)) {
-//					if (j == text.length()-1) {
-//						follows.add(PSEUDO_EOS);
-//					}
-//					else {
-//						follows.add(myText.substring(j, j+1));
-//					}
+//			while (pos < myText.length()){
+//				int start = myText.indexOf(temp,pos);
+//				if (start == -1){
 //					break;
 //				}
+//				if (start + temp.length() >= myText.length()){
+//					follows.add(PSEUDO_EOS);
+//					break;
+//				}
+//				String next = myText.substring(start+temp.length(), start+temp.length()+1);
+//				follows.add(next);
+//				pos++;
 //			}
-//			if (! myMap.containsKey(temp)) {
-//				myMap.put(temp, follows);
-//			}
-//			ArrayList<String> all = new ArrayList<String>();
-//			for (String str : myMap.get(temp)) {
-//				all.add(str);
-//			}
-//			for (int j = 1; j < follows.size(); j++) {
-//				all.add(follows.get(j));
-//			}
-//			myMap.put(temp, all);
+			for (int j = i + myOrder; j < text.length(); j++) {
+				if (myText.substring(i, j).equals(temp)) {
+					if (j == text.length()-1) {
+						follows.add(PSEUDO_EOS);
+					}
+					else {
+						follows.add(myText.substring(j, j+1));
+					}
+					break;
+				}
+			}
+			if (! myMap.containsKey(temp)) {
+				myMap.put(temp, follows);
+			}
+			ArrayList<String> all = new ArrayList<String>();
+			for (String str : myMap.get(temp)) {
+				all.add(str);
+			}
+			for (int j = 1; j < follows.size(); j++) {
+				all.add(follows.get(j));
+			}
+			myMap.put(temp, all);
 		}
 	}
 	
