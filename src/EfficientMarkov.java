@@ -32,11 +32,11 @@ public class EfficientMarkov extends BaseMarkov {
 	public void setTraining(String text) {
 		myText = text;
 		for (int i = 0; i < text.length() - myOrder; i++) {
-			String temp = myText.substring(i, i + myOrder);
+			String temp = text.substring(i, i + myOrder);
 			if (! myMap.containsKey(temp)) {
 				myMap.put(temp, new ArrayList<String>());
 			}
-			myMap.get(temp).addAll(super.getFollows(myText.substring(i, i + myOrder)));
+			myMap.get(temp).addAll(super.getFollows(temp));
 		}
 	}
 	
