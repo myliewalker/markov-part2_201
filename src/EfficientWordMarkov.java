@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Random;
+
 public class EfficientWordMarkov extends BaseWordMarkov{
 	private Map<WordGram, ArrayList<String>> myMap;
 	
@@ -35,7 +36,8 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 					break;
 				}		
 				follows.add(myWords[start]);
-				pos = index+1;
+//				pos = index+1;
+				pos++;
 			}
 			myMap.put(wg, follows);
 		}
@@ -49,3 +51,4 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 		}
 		return myMap.get(wg);
 	}
+}
