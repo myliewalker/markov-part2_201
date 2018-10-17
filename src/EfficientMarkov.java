@@ -55,10 +55,25 @@ public class EfficientMarkov extends BaseMarkov {
 					if (j == text.length()-1) {
 						follows.add(PSEUDO_EOS);
 					}
-					follows.add(myText.substring(j, j+1));
+					else {
+						follows.add(myText.substring(j, j+1));
+					}
+					break;
 				}
 			}
-			myMap.put(temp, follows);
+			if (! myMap.containsKey(temp)) {
+				myMap.put(temp, follows);
+			}
+			ArrayList<String> all = new ArrayList<String>();
+			for (String str : myMap.get(temp)) {
+				all.add(str);
+			}
+			for (String str : follows) {
+				if (! all.contains(str)) {
+					all.add(str);
+				}
+			}
+			myMap.put(temp, all);
 		}
 	}
 	
