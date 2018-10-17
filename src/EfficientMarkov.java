@@ -37,7 +37,7 @@ public class EfficientMarkov extends BaseMarkov {
 				myMap.put(temp, new ArrayList<String>());
 			}
 //			myMap.get(temp).addAll(super.getFollows(temp));
-			myMap.put(temp, super.getFollows(temp));
+			myMap.put(temp, super.getFollows(myText));
 		}
 	}
 	
