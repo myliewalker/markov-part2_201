@@ -1,61 +1,76 @@
-import java.io.File;
-import java.util.Scanner;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+//import java.util.NoSuchElementException;
+import java.util.Random;
 
-/**
- * Driver for Markov Model classes
- * @author ola
- *
- */
-
-public class MarkovDriver {
+public class EfficientMarkov extends BaseMarkov {
+	private Map<String, ArrayList<String>> myMap;
 	
-	private static final int TEXT_SIZE = 200;
-	
-	public static void markovGenerate(MarkovInterface<?> markov, String text) {
-		double start = System.nanoTime();
-		for(int k=1; k <= 5; k++) {
-			markov.setOrder(k);
-			markov.resetRandom();
-			markov.setTraining(text);
-			String random = markov.getRandomText(TEXT_SIZE);
-			System.out.printf("%d markov model with %d chars\n", k,random.length());
-			printNicely(random,60);
-		}
-		double end = System.nanoTime();
-		System.out.printf("total time = %2.3f\n", (end-start)/1e9);
+	/**
+	 * Constructs an EfficientMarkov object with the specified order
+	 * @param order size of this markov generator
+	 */
+	public EfficientMarkov(int order) {
+		super(order);
+		myRandom = new Random(RANDOM_SEED);
+		myMap = new HashMap<>();
 	}
 	
-	public static void main(String[] args) {
-			
-		String filename = "data/trump-sou17.txt";
-		//String filename = "data/bush-sou07.txt";
-
-		if (args.length > 0) {
-			filename = args[1];
-		}
-		
-		File f = new File(filename);
-		String text = TextSource.textFromFile(f);
-		MarkovInterface<String> standard = new BaseMarkov();
-		MarkovInterface<String> efficient = new EfficientMarkov();
-		MarkovInterface<WordGram> wmm = new BaseWordMarkov();
-//		MarkovInterface<WordGram> ewm = new EfficientWordMarkov();
-		markovGenerate(efficient,text);
+	/**
+	 * Constructs an EfficientMarkov object with the specified order
+	 */
+	public EfficientMarkov() {
+		this(3);
 	}
-
-	private static void printNicely(String random, int screenWidth) {
-		String[] words = random.split("\\s+");
-		int psize = 0;
-		System.out.println("----------------------------------");
-		for(int k=0; k < words.length; k++){
-			System.out.print(words[k]+ " ");
-			psize += words[k].length() + 1;
-			if (psize > screenWidth) {
-				System.out.println();
-				psize = 0;
+	
+	/**
+	 * Checks if an integer is in the tree.
+	 * @param tree Root of the tree
+	 */
+	@Override
+	public void setTraining(String text) {
+		myText = text;
+		ArrayList<String> follows = new ArrayList<String>();
+		for (int start = 0; start < text.length() - myOrder; start++) {
+			follows = new ArrayList<String>();
+			String temp = text.substring(start, start + myOrder);
+			for (int end = start + myOrder; end < text.length(); end++) {
+				if (myText.substring(start, end).equals(temp)) {
+					if (end >= text.length()) {
+						follows.add(PSEUDO_EOS);
+					}
+					else {
+						follows.add(myText.substring(end, end+1));
+					}
+					break;
+				}
 			}
+			if (! myMap.containsKey(temp)) {
+				myMap.put(temp, follows);
+			}
+			ArrayList<String> all = new ArrayList<String>();
+			for (String str : myMap.get(temp)) {
+				all.add(str);
+			}
+			for (int j = 1; j < follows.size(); j++) {
+				all.add(follows.get(j));
+			}
+			myMap.put(temp, all);
 		}
-		System.out.println("\n----------------------------------");
+	}
+	
+	/**
+	 * Checks if an integer is in the tree.
+	 * @param key Root of the tree
+	 * @return ArrayList of the strings that follow the key
+	 * @throws NullPointerException if key is not found
+	 */
+	@Override
+	public ArrayList<String> getFollows(String key) {
+		if (! myMap.containsKey(key)) {
+			return new ArrayList<String>();
+		}
+		return myMap.get(key);
 	}
 }
