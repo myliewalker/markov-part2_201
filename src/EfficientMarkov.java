@@ -37,7 +37,7 @@ public class EfficientMarkov extends BaseMarkov {
 			String temp = text.substring(start, start + myOrder);
 			for (int end = start + myOrder; end < text.length(); end++) {
 				if (myText.substring(start, end).equals(temp)) {
-					if (end >= text.length()) {
+					if (end >= text.length()-1) {
 						follows.add(PSEUDO_EOS);
 					}
 					else {
@@ -53,7 +53,7 @@ public class EfficientMarkov extends BaseMarkov {
 			for (String str : myMap.get(temp)) {
 				all.add(str);
 			}
-			for (int j = 1; j < follows.size(); j++) {
+			for (int j = 0; j < follows.size(); j++) {
 				all.add(follows.get(j));
 			}
 			myMap.put(temp, all);
