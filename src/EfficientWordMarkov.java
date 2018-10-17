@@ -17,29 +17,29 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 		this(2);
 	}
 	
-	@Override
-	public void setTraining(String text) {
-		myWords = text.split("\\s+");
-		for (int i = 0; i < myWords.length; i++) {
-			WordGram wg = new WordGram(myWords, i, myOrder);
-			if (! myMap.containsKey(wg)) {
-				myMap.put(wg, new ArrayList<String>());
-			}
-			myMap.put(wg, super.getFollows(wg));
-		}
-	}
-	
-	
-//	public void setTraining(String[] words) {
-//		myWords = words;
-//		for (int i = 0; i < words.length; i++) {
-//			WordGram wg = new WordGram(words, i, myOrder);
+//	@Override
+//	public void setTraining(String text) {
+//		myWords = text.split("\\s+");
+//		for (int i = 0; i < myWords.length; i++) {
+//			WordGram wg = new WordGram(myWords, i, myOrder);
 //			if (! myMap.containsKey(wg)) {
 //				myMap.put(wg, new ArrayList<String>());
 //			}
 //			myMap.put(wg, super.getFollows(wg));
 //		}
 //	}
+	
+	
+	public void setTraining(String[] words) {
+		myWords = words;
+		for (int i = 0; i < words.length; i++) {
+			WordGram wg = new WordGram(words, i, myOrder);
+			if (! myMap.containsKey(wg)) {
+				myMap.put(wg, new ArrayList<String>());
+			}
+			myMap.get(wg).addAll(super.getFollows(wg));
+		}
+	}
 	
 	@Override
 	public ArrayList<String> getFollows(WordGram wg) {
