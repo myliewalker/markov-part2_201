@@ -22,26 +22,25 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	public void setTraining(String text) {
 		myWords = text.split("\\s+");
 		for (int i = 0; i < myWords.length; i++) {
+			int pos = 0;            
+			ArrayList<String> follows = new ArrayList<String>();
 			WordGram wg = new WordGram(myWords, i, myOrder);
-			if (! myMap.containsKey(wg)) {
-				myMap.put(wg, new ArrayList<String>());
+			while (true) {
+				int index = indexOf(myWords,wg,pos);
+				if (index == -1) {
+					break;
+				}
+				int start = index + wg.length();
+				if (start >= myWords.length) {
+					follows.add(PSEUDO_EOS);
+					break;
+				}		
+				follows.add(myWords[start]);
+				pos = index+1;
 			}
-//			myMap.get(wg).addAll(super.getFollows(wg));
-			myMap.put(wg, super.getFollows(wg));
+			myMap.put(wg, follows);
 		}
 	}
-	
-	
-//	public void setTraining(String[] words) {
-//		myWords = words;
-//		for (int i = 0; i < words.length; i++) {
-//			WordGram wg = new WordGram(words, i, myOrder);
-//			if (! myMap.containsKey(wg)) {
-//				myMap.put(wg, new ArrayList<String>());
-//			}
-//			myMap.get(wg).addAll(super.getFollows(wg));
-//		}
-//	}
 	
 	@Override
 	public ArrayList<String> getFollows(WordGram wg) {
