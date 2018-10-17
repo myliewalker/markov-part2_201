@@ -33,26 +33,30 @@ public class EfficientMarkov extends BaseMarkov {
 		myText = text;
 		int pos = 0;
 		ArrayList<String> follows = new ArrayList<String>();
-				
-		for (int i = 0; i <= text.length() - myOrder; i++) {
+		for (int i = 0; i < text.length() - myOrder; i++) {
 			follows = new ArrayList<String>();
-			pos = 0;
+//			pos = 0;
 			String temp = text.substring(i, i + myOrder);
-			while (pos < myText.length()){
-				int start = myText.indexOf(temp,pos);
-				if (start == -1){
-					//System.out.println("didn't find "+key);
-					break;
+//			while (pos < myText.length()){
+//				int start = myText.indexOf(temp,pos);
+//				if (start == -1){
+//					break;
+//				}
+//				if (start + temp.length() >= myText.length()){
+//					follows.add(PSEUDO_EOS);
+//					break;
+//				}
+//				String next = myText.substring(start+temp.length(), start+temp.length()+1);
+//				follows.add(next);
+//				pos++;
+//			}
+			for (int j = i + myOrder; j < text.length(); j++) {
+				if (myText.substring(i, j).equals(temp)) {
+					if (j == text.length()-1) {
+						follows.add(PSEUDO_EOS);
+					}
+					follows.add(myText.substring(j, j+1));
 				}
-				if (start + temp.length() >= myText.length()){
-					//System.out.println("found end with "+key);
-					follows.add(PSEUDO_EOS);
-					break;
-				}
-				// next line is string equivalent of myText.charAt(start+key.length())
-				String next = myText.substring(start+temp.length(), start+temp.length()+1);
-				follows.add(next);
-				pos++;  // search continues after this occurrence
 			}
 			myMap.put(temp, follows);
 		}
@@ -68,7 +72,6 @@ public class EfficientMarkov extends BaseMarkov {
 	public ArrayList<String> getFollows(String key) {
 		if (! myMap.containsKey(key)) {
 			return new ArrayList<String>();
-//			throw new NoSuchElementException(key + " not in map");
 		}
 		return myMap.get(key);
 	}
