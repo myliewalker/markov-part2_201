@@ -31,14 +31,29 @@ public class EfficientMarkov extends BaseMarkov {
 	@Override
 	public void setTraining(String text) {
 		myText = text;
+		ArrayList<String> follows = new ArrayList<String>();
+		int pos = 0;
+				
 		for (int i = 0; i < text.length() - myOrder; i++) {
 			String temp = text.substring(i, i + myOrder);
-//			if (! myMap.containsKey(temp)) {
-//				myMap.put(temp, new ArrayList<String>());
-//			}
-//			myMap.get(temp).addAll(super.getFollows(temp));
-			myMap.put(temp, super.getFollows(temp));
-		}
+			while (pos < myText.length()){
+				int start = myText.indexOf(temp,pos);
+				if (start == -1){
+					//System.out.println("didn't find "+key);
+					break;
+				}
+				if (start + temp.length() >= myText.length()){
+					//System.out.println("found end with "+key);
+					follows.add(PSEUDO_EOS);
+					break;
+				}
+				// next line is string equivalent of myText.charAt(start+key.length())
+				String next = myText.substring(start+temp.length(), start+temp.length()+1);
+				follows.add(next);
+				pos = start+1;  // search continues after this occurrence
+			}
+			myMap.put(temp, follows);
+		}	
 	}
 	
 	/**
