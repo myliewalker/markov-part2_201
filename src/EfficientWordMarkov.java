@@ -22,34 +22,36 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	public void setTraining(String text) {
 		myWords = text.split("\\s+");
 		ArrayList<String> follows = new ArrayList<String>();
-		for (int start = 0; start < myWords.length - myOrder; start++) {
-			follows = new ArrayList<String>();
-			WordGram wg = new WordGram(myWords, start, myOrder);
-			String temp = myWords[start].substring(start, start + myOrder);
-			for (int end = start + myOrder; end < text.length(); end++) {
-				if (myWords[start].equals(temp)) {
-					if (end >= myWords.length-1) {
-						follows.add(PSEUDO_EOS);
-					}
-					else {
-						follows.add(myWords[end]);
-					}
-					break;
-				}
-			}
-//			while (true) {
-//				int index = indexOf(myWords,wg,pos);
-//				if (index == -1) {
+		for (int i = 0; i < myWords.length - myOrder; i++) {
+//			follows = new ArrayList<String>();
+//			WordGram wg = new WordGram(myWords, start, myOrder);
+//			String temp = myWords[start].substring(start, start + myOrder);
+//			for (int end = start + myOrder; end < text.length(); end++) {
+//				if (myWords[start].equals(temp)) {
+//					if (end >= myWords.length-1) {
+//						follows.add(PSEUDO_EOS);
+//					}
+//					else {
+//						follows.add(myWords[end]);
+//					}
 //					break;
 //				}
-//				int start = index + wg.length();
-//				if (start >= myWords.length) {
-//					follows.add(PSEUDO_EOS);
-//					break;
-//				}		
-//				follows.add(myWords[start]);
-//				pos = index+1;
 //			}
+			int pos = 0;
+			WordGram wg = new WordGram(myWords, i, myOrder);
+			while (true) {
+				int index = indexOf(myWords,wg,pos);
+				if (index == -1) {
+					break;
+				}
+				int start = index + wg.length();
+				if (start >= myWords.length) {
+					follows.add(PSEUDO_EOS);
+					break;
+				}		
+				follows.add(myWords[start]);
+				pos = index+1;
+			}
 			myMap.put(wg, follows);
 		}
 	}
