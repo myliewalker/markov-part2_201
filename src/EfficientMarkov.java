@@ -52,7 +52,7 @@ public class EfficientMarkov extends BaseMarkov {
 				// next line is string equivalent of myText.charAt(start+key.length())
 				String next = myText.substring(start+temp.length(), start+temp.length()+1);
 				follows.add(next);
-				pos = start+1;  // search continues after this occurrence
+				pos++;  // search continues after this occurrence
 			}
 			myMap.put(temp, follows);
 		}
