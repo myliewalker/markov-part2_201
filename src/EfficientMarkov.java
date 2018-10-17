@@ -68,8 +68,8 @@ public class EfficientMarkov extends BaseMarkov {
 			for (String str : myMap.get(temp)) {
 				all.add(str);
 			}
-			for (String str : follows) {
-				all.add(str);
+			for (int j = 1; j < follows.size(); j++) {
+				all.add(follows.get(j));
 			}
 			myMap.put(temp, all);
 		}
