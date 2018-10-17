@@ -9,7 +9,6 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	
 	public EfficientWordMarkov(int order) {
 		super(order);
-		myOrder = order;
 		myRandom = new Random(RANDOM_SEED);
 		myMap = new HashMap<>();
 	}

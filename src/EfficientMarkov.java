@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.NoSuchElementException;
+//import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class EfficientMarkov extends BaseMarkov {
@@ -32,10 +32,10 @@ public class EfficientMarkov extends BaseMarkov {
 	public void setTraining(String text) {
 		myText = text;
 		for (int i = 0; i < text.length() - myOrder; i++) {
-			if (! myMap.containsKey(text.substring(i, i + myOrder))) {
-				myMap.put(text.substring(i, i + myOrder), new ArrayList<String>());
+			if (! myMap.containsKey(myText.substring(i, i + myOrder))) {
+				myMap.put(myText.substring(i, i + myOrder), new ArrayList<String>());
 			}
-			myMap.put(text.substring(i, i + myOrder), super.getFollows(text.substring(i, i + myOrder)));
+			myMap.put(myText.substring(i, i + myOrder), super.getFollows(myText.substring(i, i + myOrder)));
 		}
 	}
 	
