@@ -26,7 +26,8 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 			if (! myMap.containsKey(wg)) {
 				myMap.put(wg, new ArrayList<String>());
 			}
-			myMap.get(wg).addAll(super.getFollows(wg));
+//			myMap.get(wg).addAll(super.getFollows(wg));
+			myMap.put(wg, super.getFollows(wg));
 		}
 	}
 	

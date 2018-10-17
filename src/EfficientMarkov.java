@@ -36,7 +36,8 @@ public class EfficientMarkov extends BaseMarkov {
 			if (! myMap.containsKey(temp)) {
 				myMap.put(temp, new ArrayList<String>());
 			}
-			myMap.get(temp).addAll(super.getFollows(temp));
+//			myMap.get(temp).addAll(super.getFollows(temp));
+			myMap.put(temp, super.getFollows(temp));
 		}
 	}
 	
