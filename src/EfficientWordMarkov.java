@@ -3,7 +3,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Random;
-
 public class EfficientWordMarkov extends BaseWordMarkov{
 	private Map<WordGram, ArrayList<String>> myMap;
 	
@@ -41,43 +40,6 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 			myMap.put(wg, follows);
 		}
 	}
-
-//	public void setTraining(String text) {
-//		myWords = text.split("\\s+");
-//		ArrayList<String> follows = new ArrayList<String>();
-//		for (int i = 0; i < myWords.length - myOrder; i++) {
-////			follows = new ArrayList<String>();
-////			WordGram wg = new WordGram(myWords, start, myOrder);
-////			String temp = myWords[start].substring(start, start + myOrder);
-////			for (int end = start + myOrder; end < text.length(); end++) {
-////				if (myWords[start].equals(temp)) {
-////					if (end >= myWords.length-1) {
-////						follows.add(PSEUDO_EOS);
-////					}
-////					else {
-////						follows.add(myWords[end]);
-////					}
-////					break;
-////				}
-////			}
-//			int pos = 0;
-//			WordGram wg = new WordGram(myWords, i, myOrder);
-//			while (true) {
-//				int index = indexOf(myWords,wg,pos);
-//				if (index == -1) {
-//					break;
-//				}
-//				int start = index + wg.length();
-//				if (start >= myWords.length) {
-//					follows.add(PSEUDO_EOS);
-//					break;
-//				}		
-//				follows.add(myWords[start]);
-//				pos = index+1;
-//			}
-//			myMap.put(wg, follows);
-//		}
-//	}
 	
 	@Override
 	public ArrayList<String> getFollows(WordGram wg) {
@@ -87,4 +49,3 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 		}
 		return myMap.get(wg);
 	}
-}
