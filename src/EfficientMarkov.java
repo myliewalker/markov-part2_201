@@ -31,10 +31,12 @@ public class EfficientMarkov extends BaseMarkov {
 	@Override
 	public void setTraining(String text) {
 		myText = text;
-		ArrayList<String> follows = new ArrayList<String>();
 		int pos = 0;
+		ArrayList<String> follows = new ArrayList<String>();
 				
-		for (int i = 0; i < text.length() - myOrder; i++) {
+		for (int i = 0; i <= text.length() - myOrder; i++) {
+			follows = new ArrayList<String>();
+			pos = 0;
 			String temp = text.substring(i, i + myOrder);
 			while (pos < myText.length()){
 				int start = myText.indexOf(temp,pos);
@@ -45,6 +47,7 @@ public class EfficientMarkov extends BaseMarkov {
 				if (start + temp.length() >= myText.length()){
 					//System.out.println("found end with "+key);
 					follows.add(PSEUDO_EOS);
+					System.out.println(start);
 					break;
 				}
 				// next line is string equivalent of myText.charAt(start+key.length())
@@ -53,7 +56,8 @@ public class EfficientMarkov extends BaseMarkov {
 				pos = start+1;  // search continues after this occurrence
 			}
 			myMap.put(temp, follows);
-		}	
+		}
+		System.out.println(myMap);
 	}
 	
 	/**
