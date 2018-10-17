@@ -69,9 +69,7 @@ public class EfficientMarkov extends BaseMarkov {
 				all.add(str);
 			}
 			for (String str : follows) {
-				if (! all.contains(str)) {
-					all.add(str);
-				}
+				all.add(str);
 			}
 			myMap.put(temp, all);
 		}
