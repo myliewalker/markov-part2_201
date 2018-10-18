@@ -32,10 +32,31 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 				if (! myMap.containsKey(wg)) {
 					myMap.put(wg, new ArrayList<String>());
 				}
-				myMap.get(wg).add(myWords[start + myOrder]);
+				myMap.get(wg).add(myWords[start + myOrder -1]);
 			}
 		}
 	}
+	
+//	public void setTraining(String text) {
+//		myText = text;
+//		String temp = "";
+//		for (int start = 0; start <= text.length() - myOrder; start++) {
+//			temp = text.substring(start, start + myOrder);
+//			if (start == text.length() - myOrder) {
+//				if (! myMap.containsKey(temp)) {
+//					myMap.put(temp, new ArrayList<String>());
+//				}
+//				myMap.get(temp).add(PSEUDO_EOS);
+//				break;
+//			}
+//			if (myText.substring(start, start+myOrder).equals(temp)) {
+//				if (! myMap.containsKey(temp)) {
+//					myMap.put(temp, new ArrayList<String>());		
+//				}
+//				myMap.get(temp).add(myText.substring(start + myOrder, start + myOrder + 1));
+//			}
+//		}
+//	}
 	
 	@Override
 	public ArrayList<String> getFollows(WordGram wg) {
