@@ -31,13 +31,19 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 				}
 				int start = index + wg.length();
 				if (start >= myWords.length) {
-					follows.add(PSEUDO_EOS);
+					if (! myMap.contains(wg)) {
+						myMap.put(wg, new ArrayList<String>());
+					}
+					myMap.get(wg).add(PSEUDO_EOS);
 					break;
 				}		
-				follows.add(myWords[start]);
+				if (! myMap.contains(wg)) [
+					myMap.put(wg, new ArrayList<String>());
+				]
+				myMap.get(wg).add(myWords[start]);
 				pos = index+1;
 			}
-			myMap.put(wg, follows);
+			// myMap.put(wg, follows);
 		}
 	}
 	
