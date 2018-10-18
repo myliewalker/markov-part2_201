@@ -36,27 +36,43 @@ public class EfficientMarkov extends BaseMarkov {
 			String temp = text.substring(start, start + myOrder);
 			for (int end = start + myOrder; end < text.length(); end++) {
 				if (myText.substring(start, start+myOrder).equals(temp)) {
-					if (end >= text.length()) {
-						ArrayList<String> entry = new ArrayList<String>();
-						entry.add(PSEUDO_EOS);
-						if (! myMap.containsKey(temp)) {
-							myMap.put(temp, entry);
-						}
-						else myMap.get(temp).add(PSEUDO_EOS);
+					if (! myMap.containsKey(temp)) {
+						myMap.put(temp, new ArrayList<String>());		
 					}
-					else {
-						ArrayList<String> entry = new ArrayList<String>();
-						entry.add(myText.substring(end, end+1));
-						if (! myMap.containsKey(temp)) {
-							myMap.put(temp, entry);		
-						}
-						else myMap.get(temp).add(myText.substring(end, end+1));
+					myMap.get(temp).add(myText.substring(end, end+1));
+					if (end == text.length()-1) {
+						myMap.get(temp).add(PSEUDO_EOS);
 					}
 					break;
 				}
 			}
 		}
 	}
+	
+//	public void setTraining(String text) {
+//		myText = text;
+//		for (int start = 0; start < text.length() - myOrder; start++) {
+//			String temp = text.substring(start, start + myOrder);
+//			for (int end = start + myOrder; end < text.length(); end++) {
+//				if (myText.substring(start, start+myOrder).equals(temp)) {
+//					if (end == text.length()) {
+//						if (! myMap.containsKey(temp)) {
+//							myMap.put(temp, new ArrayList<String>());
+//						}
+//						myMap.get(temp).add(PSEUDO_EOS);
+//					}
+//					else {
+//						if (! myMap.containsKey(temp)) {
+//							myMap.put(temp, new ArrayList<String>());		
+//						}
+//						myMap.get(temp).add(myText.substring(end, end+1));
+//					}
+//					break;
+//				}
+//			}
+//		}
+//	}
+	
 	
 //	public void setTraining(String text) {
 //		myWords = text.split("\\s+");
