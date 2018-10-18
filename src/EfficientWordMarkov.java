@@ -20,29 +20,47 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	@Override
 	public void setTraining(String text) {
 		myWords = text.split("\\s+");
-		for (int i = 0; i < myWords.length - myOrder; i++) {
-			int pos = 0;            
-			WordGram wg = new WordGram(myWords, i, myOrder);
-			while (true) {
-				int index = indexOf(myWords,wg,pos);
-				if (index == -1) {
-					break;
-				}
-				int start = index + wg.length();
-				if (start >= myWords.length) {
-					if (! myMap.containsKey(wg)) {
-						myMap.put(wg, new ArrayList<String>());
+		for (int start = 0; start < myWords.length - myOrder; start++) {
+			WordGram wg = new WordGram(myWords, start, myOrder);
+			for (int end = start + myOrder; end < myWords.length; end++) {
+				if (new WordGram(myWords, start, myOrder).equals(wg)) {
+					if (end >= myWords.length) {
+						if (! myMap.containsKey(wg)) {
+							myMap.put(wg, new ArrayList<String>());
+						}
+						myMap.get(wg).add(PSEUDO_EOS);
 					}
-					myMap.get(wg).add(PSEUDO_EOS);
-					break;
-				}		
-				if (! myMap.containsKey(wg)) {
-					myMap.put(wg, new ArrayList<String>());
+					else {
+						if (! myMap.containsKey(wg)) {
+							myMap.put(wg, new ArrayList<String>());
+						}
+						myMap.get(wg).add(myWords[end]);
+					}
 				}
-				myMap.get(wg).add(myWords[start]);
-				pos = index+1;
 			}
 		}
+		
+//		myText = text;
+//		for (int start = 0; start < text.length() - myOrder; start++) {
+//			String temp = text.substring(start, start + myOrder);
+//			for (int end = start + myOrder; end < text.length(); end++) {
+//				if (myText.substring(start, start+myOrder).equals(temp)) {
+//					if (end >= text.length()) {
+//						if (! myMap.containsKey(temp)) {
+//							myMap.put(temp, new ArrayList<String>());
+//						}
+//						myMap.get(temp).add(PSEUDO_EOS);
+//					}
+//					else {
+//						if (! myMap.containsKey(temp)) {
+//							myMap.put(temp, new ArrayList<String>());		
+//						}
+//						myMap.get(temp).add(myText.substring(end, end+1));
+//					}
+//					break;
+//				}
+//			}
+//		}
 	}
 	
 	@Override
