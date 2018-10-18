@@ -40,11 +40,11 @@ public class EfficientMarkov extends BaseMarkov {
 						myMap.put(temp, new ArrayList<String>());		
 					}
 					myMap.get(temp).add(myText.substring(end, end+1));
-					if (end == text.length()-1) {
-						myMap.get(temp).add(PSEUDO_EOS);
-					}
 					break;
 				}
+			}
+			if (start == text.length() - myOrder -1) {
+				myMap.get(temp).add(PSEUDO_EOS);
 			}
 		}
 	}
