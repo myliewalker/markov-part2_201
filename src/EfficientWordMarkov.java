@@ -22,7 +22,6 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 		myWords = text.split("\\s+");
 		for (int i = 0; i < myWords.length - myOrder; i++) {
 			int pos = 0;            
-			ArrayList<String> follows = new ArrayList<String>();
 			WordGram wg = new WordGram(myWords, i, myOrder);
 			while (true) {
 				int index = indexOf(myWords,wg,pos);
@@ -43,7 +42,6 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 				myMap.get(wg).add(myWords[start]);
 				pos = index+1;
 			}
-			// myMap.put(wg, follows);
 		}
 	}
 	
