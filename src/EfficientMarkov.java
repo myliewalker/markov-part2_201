@@ -33,7 +33,7 @@ public class EfficientMarkov extends BaseMarkov {
 	public void setTraining(String text) {
 		myText = text;
 		String temp = "";
-		for (int start = 0; start < text.length() - myOrder; start++) {
+		for (int start = 0; start <= text.length() - myOrder; start++) {
 			temp = text.substring(start, start + myOrder);
 			for (int end = start + myOrder; end < text.length(); end++) {
 				if (myText.substring(start, start+myOrder).equals(temp)) {
@@ -44,13 +44,12 @@ public class EfficientMarkov extends BaseMarkov {
 					break;
 				}
 			}
-//			if (start == text.length() - myOrder) {
-//				ArrayList<String> insert = myMap.get(temp);
-//				insert.add(PSEUDO_EOS);
-//				myMap.put(temp, insert);
-//			}
+			if (start == text.length() - myOrder) {
+				ArrayList<String> insert = myMap.get(temp);
+				insert.add(PSEUDO_EOS);
+				myMap.put(temp, insert);
+			}
 		}
-		myMap.get(temp).add(PSEUDO_EOS);
 	}
 	
 	/**
