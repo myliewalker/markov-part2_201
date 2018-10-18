@@ -35,6 +35,9 @@ public class EfficientMarkov extends BaseMarkov {
 		String temp = "";
 		for (int start = 0; start <= text.length() - myOrder; start++) {
 			if (start == text.length() - myOrder) {
+				if (! myMap.containsKey(temp)) {
+					myMap.put(temp, new ArrayList<String>());
+				}
 				ArrayList<String> insert = myMap.get(temp);
 				insert.add(PSEUDO_EOS);
 				myMap.put(temp, insert);
