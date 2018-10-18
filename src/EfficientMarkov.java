@@ -61,7 +61,6 @@ public class EfficientMarkov extends BaseMarkov {
 	public ArrayList<String> getFollows(String key) {
 		if (! myMap.containsKey(key)) {
 			return new ArrayList<String>();
-//			throw new NoSuchElementException(key + " not in map");
 		}
 		return myMap.get(key);
 	}
