@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 //import java.util.NoSuchElementException;
 import java.util.Random;
 
@@ -33,7 +34,7 @@ public class EfficientMarkov extends BaseMarkov {
 		myText = text;
 		for (int start = 0; start < text.length() - myOrder; start++) {
 			String temp = text.substring(start, start + myOrder);
-			for (int end = start + myOrder; end <= text.length(); end++) {
+			for (int end = start + myOrder; end < text.length(); end++) {
 				if (myText.substring(start, start+myOrder).equals(temp)) {
 					if (end >= text.length()) {
 						if (! myMap.containsKey(temp)) {
@@ -62,7 +63,8 @@ public class EfficientMarkov extends BaseMarkov {
 	@Override
 	public ArrayList<String> getFollows(String key) {
 		if (! myMap.containsKey(key)) {
-			return new ArrayList<String>();
+//			return new ArrayList<String>();
+			throw new NoSuchElementException(key + " not in map");
 		}
 		return myMap.get(key);
 	}
