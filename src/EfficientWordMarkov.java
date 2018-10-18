@@ -31,13 +31,13 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 				}
 				int start = index + wg.length();
 				if (start >= myWords.length) {
-					if (! myMap.contains(wg)) {
+					if (! myMap.containsKey(wg)) {
 						myMap.put(wg, new ArrayList<String>());
 					}
 					myMap.get(wg).add(PSEUDO_EOS);
 					break;
 				}		
-				if (! myMap.contains(wg)) {
+				if (! myMap.containsKey(wg)) {
 					myMap.put(wg, new ArrayList<String>());
 				}
 				myMap.get(wg).add(myWords[start]);
