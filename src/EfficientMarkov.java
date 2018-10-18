@@ -31,13 +31,11 @@ public class EfficientMarkov extends BaseMarkov {
 	@Override
 	public void setTraining(String text) {
 		myText = text;
-		ArrayList<String> follows = new ArrayList<String>();
 		for (int start = 0; start < text.length() - myOrder; start++) {
-			follows = new ArrayList<String>();
 			String temp = text.substring(start, start + myOrder);
 			for (int end = start + myOrder; end < text.length(); end++) {
 				if (myText.substring(start, start+myOrder).equals(temp)) {
-					if (end >= text.length()) {
+					if (end >= text.length()-1) {
 						if (! myMap.containsKey(temp)) {
 							myMap.put(temp, new ArrayList<String>());
 						}
@@ -52,18 +50,6 @@ public class EfficientMarkov extends BaseMarkov {
 					break;
 				}
 			}
-//			if (myMap.containsKey(temp)) {
-//				myMap.get(temp).add(follows);
-////				myMap.put(temp, follows);
-//			}
-//			ArrayList<String> all = new ArrayList<String>();
-//			for (String str : myMap.get(temp)) {
-//				all.add(str);
-//			}
-//			for (int j = 1; j < follows.size(); j++) {
-//				all.add(follows.get(j));
-//			}
-//			myMap.put(temp, all);
 		}
 	}
 	
