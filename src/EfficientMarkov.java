@@ -37,22 +37,50 @@ public class EfficientMarkov extends BaseMarkov {
 			for (int end = start + myOrder; end < text.length(); end++) {
 				if (myText.substring(start, start+myOrder).equals(temp)) {
 					if (end >= text.length()) {
+						ArrayList<String> entry = new ArrayList<String>();
+						entry.add(PSEUDO_EOS);
 						if (! myMap.containsKey(temp)) {
-							myMap.put(temp, new ArrayList<String>());
+							myMap.put(temp, entry);
 						}
-						myMap.get(temp).add(PSEUDO_EOS);
+						else myMap.get(temp).add(PSEUDO_EOS);
 					}
 					else {
+						ArrayList<String> entry = new ArrayList<String>();
+						entry.add(myText.substring(end, end+1));
 						if (! myMap.containsKey(temp)) {
-							myMap.put(temp, new ArrayList<String>());		
+							myMap.put(temp, entry);		
 						}
-						myMap.get(temp).add(myText.substring(end, end+1));
+						else myMap.get(temp).add(myText.substring(end, end+1));
 					}
 					break;
 				}
 			}
 		}
 	}
+	
+//	public void setTraining(String text) {
+//		myWords = text.split("\\s+");
+//		for (int start = 0; start < myWords.length - myOrder; start++) {
+//			WordGram wg = new WordGram(myWords, start, myOrder);
+//			for (int end = start + myOrder; end < myWords.length; end++) {
+//				if (new WordGram(myWords, start, myOrder).equals(wg)) {
+//					if (end >= myWords.length) {
+//						if (! myMap.containsKey(wg)) {
+//							myMap.put(wg, new ArrayList<String>());
+//						}
+//						myMap.get(wg).add(PSEUDO_EOS);
+//					}
+//					else {
+//						if (! myMap.containsKey(wg)) {
+//							myMap.put(wg, new ArrayList<String>());
+//						}
+//						myMap.get(wg).add(myWords[end]);
+//					}
+//					break;
+//				}
+//			}
+//		}
+//	}
 	
 	/**
 	 * Checks if an integer is in the tree.
