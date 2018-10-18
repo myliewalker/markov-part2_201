@@ -34,7 +34,12 @@ public class EfficientMarkov extends BaseMarkov {
 		myText = text;
 		String temp = "";
 		for (int start = 0; start <= text.length() - myOrder; start++) {
-			temp = text.substring(start, start + myOrder);
+			if (start == text.length() - myOrder) {
+				ArrayList<String> insert = myMap.get(temp);
+				insert.add(PSEUDO_EOS);
+				myMap.put(temp, insert);
+				break;
+			}temp = text.substring(start, start + myOrder);
 			for (int end = start + myOrder; end < text.length(); end++) {
 				if (myText.substring(start, start+myOrder).equals(temp)) {
 					if (! myMap.containsKey(temp)) {
@@ -43,11 +48,6 @@ public class EfficientMarkov extends BaseMarkov {
 					myMap.get(temp).add(myText.substring(end, end+1));
 					break;
 				}
-			}
-			if (start == text.length() - myOrder) {
-				ArrayList<String> insert = myMap.get(temp);
-				insert.add(PSEUDO_EOS);
-				myMap.put(temp, insert);
 			}
 		}
 	}
