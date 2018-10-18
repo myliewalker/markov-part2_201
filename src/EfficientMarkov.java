@@ -44,34 +44,12 @@ public class EfficientMarkov extends BaseMarkov {
 				}
 			}
 			if (start == text.length() - myOrder) {
-				myMap.get(temp).add(PSEUDO_EOS);
+				ArrayList<String> insert = myMap.get(temp);
+				insert.add(PSEUDO_EOS);
+				myMap.put(temp, insert);
 			}
 		}
 	}
-	
-//	public void setTraining(String text) {
-//		myText = text;
-//		for (int start = 0; start < text.length() - myOrder; start++) {
-//			String temp = text.substring(start, start + myOrder);
-//			for (int end = start + myOrder; end < text.length(); end++) {
-//				if (myText.substring(start, start+myOrder).equals(temp)) {
-//					if (end == text.length()) {
-//						if (! myMap.containsKey(temp)) {
-//							myMap.put(temp, new ArrayList<String>());
-//						}
-//						myMap.get(temp).add(PSEUDO_EOS);
-//					}
-//					else {
-//						if (! myMap.containsKey(temp)) {
-//							myMap.put(temp, new ArrayList<String>());		
-//						}
-//						myMap.get(temp).add(myText.substring(end, end+1));
-//					}
-//					break;
-//				}
-//			}
-//		}
-//	}
 	
 	/**
 	 * Checks if an integer is in the tree.
