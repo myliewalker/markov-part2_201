@@ -43,7 +43,7 @@ public class EfficientMarkov extends BaseMarkov {
 					break;
 				}
 			}
-			if (temp.equals(text.substring(text.length()-myOrder, text.length()))) {
+			if (temp.equals(text.substring(text.length()-myOrder-1, text.length()-1))) {
 				myMap.get(temp).add(PSEUDO_EOS);
 			}
 		}
