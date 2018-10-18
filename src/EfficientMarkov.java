@@ -56,7 +56,7 @@ public class EfficientMarkov extends BaseMarkov {
 			for (int j = 1; j < follows.size(); j++) {
 				all.add(follows.get(j));
 			}
-			myMap.put(temp, all);
+			myMap.put(temp, follows);
 		}
 	}
 	
