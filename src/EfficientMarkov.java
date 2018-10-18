@@ -43,7 +43,7 @@ public class EfficientMarkov extends BaseMarkov {
 					break;
 				}
 			}
-			if (start == text.length() - myOrder -1) {
+			if (start == text.length() - myOrder) {
 				myMap.get(temp).add(PSEUDO_EOS);
 			}
 		}
@@ -66,31 +66,6 @@ public class EfficientMarkov extends BaseMarkov {
 //							myMap.put(temp, new ArrayList<String>());		
 //						}
 //						myMap.get(temp).add(myText.substring(end, end+1));
-//					}
-//					break;
-//				}
-//			}
-//		}
-//	}
-	
-	
-//	public void setTraining(String text) {
-//		myWords = text.split("\\s+");
-//		for (int start = 0; start < myWords.length - myOrder; start++) {
-//			WordGram wg = new WordGram(myWords, start, myOrder);
-//			for (int end = start + myOrder; end < myWords.length; end++) {
-//				if (new WordGram(myWords, start, myOrder).equals(wg)) {
-//					if (end >= myWords.length) {
-//						if (! myMap.containsKey(wg)) {
-//							myMap.put(wg, new ArrayList<String>());
-//						}
-//						myMap.get(wg).add(PSEUDO_EOS);
-//					}
-//					else {
-//						if (! myMap.containsKey(wg)) {
-//							myMap.put(wg, new ArrayList<String>());
-//						}
-//						myMap.get(wg).add(myWords[end]);
 //					}
 //					break;
 //				}
