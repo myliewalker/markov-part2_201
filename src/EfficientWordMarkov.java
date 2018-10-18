@@ -40,35 +40,13 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 				}
 			}
 		}
-		
-//		myText = text;
-//		for (int start = 0; start < text.length() - myOrder; start++) {
-//			String temp = text.substring(start, start + myOrder);
-//			for (int end = start + myOrder; end < text.length(); end++) {
-//				if (myText.substring(start, start+myOrder).equals(temp)) {
-//					if (end >= text.length()) {
-//						if (! myMap.containsKey(temp)) {
-//							myMap.put(temp, new ArrayList<String>());
-//						}
-//						myMap.get(temp).add(PSEUDO_EOS);
-//					}
-//					else {
-//						if (! myMap.containsKey(temp)) {
-//							myMap.put(temp, new ArrayList<String>());		
-//						}
-//						myMap.get(temp).add(myText.substring(end, end+1));
-//					}
-//					break;
-//				}
-//			}
-//		}
 	}
 	
 	@Override
 	public ArrayList<String> getFollows(WordGram wg) {
 		if (! myMap.containsKey(wg)) {
-//			return new ArrayList<String>();
-			throw new NoSuchElementException(wg + " not in map");
+			return new ArrayList<String>();
+//			throw new NoSuchElementException(wg + " not in map");
 		}
 		return myMap.get(wg);
 	}
