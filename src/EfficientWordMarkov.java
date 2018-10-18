@@ -37,9 +37,9 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 					myMap.get(wg).add(PSEUDO_EOS);
 					break;
 				}		
-				if (! myMap.contains(wg)) [
+				if (! myMap.contains(wg)) {
 					myMap.put(wg, new ArrayList<String>());
-				]
+				}
 				myMap.get(wg).add(myWords[start]);
 				pos = index+1;
 			}
