@@ -39,20 +39,15 @@ public class EfficientMarkov extends BaseMarkov {
 				if (! myMap.containsKey(temp)) {
 					myMap.put(temp, new ArrayList<String>());
 				}
-				ArrayList<String> insert = myMap.get(temp);
-				insert.add(PSEUDO_EOS);
-				myMap.put(temp, insert);
+				myMap.get(temp).add(PSEUDO_EOS);
 				break;
 			}
-//			for (int end = start + myOrder; end < text.length(); end++) {
-				if (myText.substring(start, start+myOrder).equals(temp)) {
-					if (! myMap.containsKey(temp)) {
-						myMap.put(temp, new ArrayList<String>());		
-					}
-					myMap.get(temp).add(myText.substring(start + myOrder, start + myOrder + 1));
-//					break;
+			if (myText.substring(start, start+myOrder).equals(temp)) {
+				if (! myMap.containsKey(temp)) {
+					myMap.put(temp, new ArrayList<String>());		
 				}
-//			}
+				myMap.get(temp).add(myText.substring(start + myOrder, start + myOrder + 1));
+			}
 		}
 	}
 	
