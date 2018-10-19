@@ -43,9 +43,10 @@ Do you the timings support the O(N+T) analysis for EfficientMarkov?
 32,000 characters: 0.606 seconds
 
 As N increases, the difference in runtimes also increases. It takes 3.29 times as
-long to run 32,000 cases than to run 2,000 cases. Since it takes about 3.3 times as long
-to run 8 times the number of characters, these timings support the O(N+T) analysis for
-EfficientMarkov.
+long to run 32,000 cases than to run 2,000 cases. This difference in runtime is 
+significantly smaller than the difference in runtime for BaseMarkov. Since it takes 
+about 3.3 times as long to run 8 times the number of characters, and these timings 
+support the O(N+T) analysis for EfficientMarkov.
 
 
 (3)The tests in the class Benchmark use an order-5 Markov Model. 
