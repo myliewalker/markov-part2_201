@@ -27,6 +27,7 @@ to generate 32,000 than 16,000. On average, doubling the number of characters
 causes the method to take 1.93 times as long to run. Thus, these timings support
 the O(NT) analysis for BaseMarkov.
 
+
 (2) Determine (from running Benchmark.java) how long it takes for 
 EfficientMarkov to generate 2,000, 4,000, 8,000, 16,000, and 32,000 
 random characters using the default file and an order 5 Markov Model. 
@@ -46,6 +47,7 @@ long to run 32,000 cases than to run 2,000 cases. Since it takes about 3.3 times
 to run 8 times the number of characters, these timings support the O(N+T) analysis for
 EfficientMarkov.
 
+
 (3)The tests in the class Benchmark use an order-5 Markov Model. 
 Run tests that you think are appropriate to determine if the order of the 
 Markov Model has a significant impact on the running time for BaseMarkov. 
@@ -57,7 +59,7 @@ the effect of order on runtime, and also compare it to the effect to increasing 
 of characters.
 
 Order-5: 2.429 seconds
-Order-10: 11.605
+Order-10: 7.605
 Order-20: 9.807
 Order-40: 11.605
 Order-80: 14.370
