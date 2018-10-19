@@ -3,6 +3,8 @@ This is the analysis for Markov Part 2, Fall 2018
 Include your name and net id here. Answer the questions from the assignment 
 that are reproduced below
 
+Mylie Walker mgw25
+
 (1) Determine (from running Benchmark.java) how long it takes for 
 BaseMarkov to generate 2,000, 4,000, 8,000, 16,000, and 32,000 
 random characters using the default file and an order 5 Markov Model. 
@@ -11,7 +13,19 @@ The program also generates 4,096 characters using texts that increase in
 size from 496,768 characters to 4,967,680 characters (10 times the number).  
 Do you the timings support the O(NT) analysis for BaseMarkov?
 
+2,000 characters: 1.838 seconds
+4,000 characters: 3.217 seconds
+8,000 characters: 6.238 seconds
+16,000 characters: 10.050 seconds
+32,000 characters: 24.109 seconds
 
+As N doubles, the runtime of BaseMarkov about doubles: it takes 1.75 times 
+as long to generate 4,000 characters than 2,000. Likewise, it takes 1.94 times
+as long to generate 8,000 characters than 4,000. It takes 1.61 times as long
+to generate 16,000 characters than 8,000. Lastly, it takes 2.40 times as long
+to generate 32,000 than 16,000. On average, doubling the number of characters
+causes the method to take 1.93 times as long to run. Thus, these timings support
+the O(NT) analysis for BaseMarkov.
 
 (2) Determine (from running Benchmark.java) how long it takes for 
 EfficientMarkov to generate 2,000, 4,000, 8,000, 16,000, and 32,000 
@@ -21,7 +35,36 @@ The program also generates 4,096 characters using texts that increase in
 size from 496,768 characters to 4,967,680 characters (10 times the number).  
 Do you the timings support the O(N+T) analysis for EfficientMarkov?
 
+2,000 characters: 0.184 seconds
+4,000 characters: 0.477 seconds
+8,000 characters: 0.551 seconds
+16,000 characters: 0.174 seconds
+32,000 characters: 0.606 seconds
+
+As N increases, the difference in runtimes also increases. It takes 3.29 times as
+long to run 32,000 cases than to run 2,000 cases. Since it takes about 3.3 times as long
+to run 8 times the number of characters, these timings support the O(N+T) analysis for
+EfficientMarkov.
+
 (3)The tests in the class Benchmark use an order-5 Markov Model. 
 Run tests that you think are appropriate to determine if the order of the 
 Markov Model has a significant impact on the running time for BaseMarkov. 
 Explain your reasoning.
+
+I tested the runtime of generating 200 characters with different BaseMarkov 
+models. I ran 5 tests, and doubled the order of each Markov Model. This allowed me to observe
+the effect of order on runtime, and also compare it to the effect to increasing the number
+of characters.
+
+Order-5: 2.429 seconds
+Order-10: 11.605
+Order-20: 9.807
+Order-40: 11.605
+Order-80: 14.370
+
+The order of the Markov Model does have a significant impact on the runtime of Base Markov.
+As the order of the model increases, the runtime also increases. When I increased the order 16
+times (from 5 to 80), the runtime increased 6 times (from 2.429 seconds to 14.370 seconds). 
+In comparison, increasing the number of characters 16 times increased the runtime 13 times.
+Although the increase in runtime is only about half as big, changing the order of the 
+Markov Model still has a significant impact on Base Markov's runtime.
